@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Template Debug",
+      "type": "dart",
+      "request": "launch",
+      "cwd": ".",
+      "flutterMode": "debug",
+      "toolArgs": ["--dart-define-from-file", "env/env.json"]
+    },
+    {
+      "name": "Template Profile",
+      "type": "dart",
+      "request": "launch",
+      "cwd": ".",
+      "flutterMode": "profile",
+      "toolArgs": ["--dart-define-from-file", "env/env.json"]
+    },
+    {
+      "name": "Template Release",
+      "type": "dart",
+      "request": "launch",
+      "cwd": ".",
+      "flutterMode": "release",
+      "toolArgs": ["--dart-define-from-file", "env/env.json"]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+name: template
+
+packages:
+  - .
+  - packages/*
+
+scripts:
+  analyze:
+    run: melos exec -- dart analyze .
+
+  clean:
+    run: melos exec -- flutter clean
+
+  test_coverage:
+    run: melos exec --ignore"*design_system*" -- flutter test --coverage
