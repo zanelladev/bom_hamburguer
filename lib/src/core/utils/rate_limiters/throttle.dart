@@ -38,7 +38,10 @@ class Throttle {
       _isReady = false;
 
       action();
-      _timer = Timer(Duration(milliseconds: milliseconds), () => _isReady = true);
+      _timer = Timer(
+        Duration(milliseconds: milliseconds),
+        () => _isReady = true,
+      );
     }
   }
 

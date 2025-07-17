@@ -1,4 +1,4 @@
-name: template
+name: bom_hamburguer
 
 packages:
   - .

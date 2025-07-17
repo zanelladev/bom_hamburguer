@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TemplateColors {
+class AppColors {
   // Neutral colors
   static const neutral050 = Color(0xffFAFAFA);
   static const neutral100 = Color(0xffF5F5F5);

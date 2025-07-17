@@ -7,18 +7,15 @@ class RouteParams {
   final Map<String, String>? pathParameters;
   final Object? extra;
 
-  const RouteParams({
-    this.queryParameters,
-    this.pathParameters,
-    this.extra,
-  });
+  const RouteParams({this.queryParameters, this.pathParameters, this.extra});
 }
 
 class BaseRoute {
   final String name;
   final String path;
   final Widget Function(BuildContext context, RouteParams params)? builder;
-  final Page<dynamic> Function(BuildContext context, RouteParams params)? pageBuilder;
+  final Page<dynamic> Function(BuildContext context, RouteParams params)?
+  pageBuilder;
   final RouteTransitions transition;
 
   const BaseRoute({

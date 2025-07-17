@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../constants/Template_colors.dart';
+import '../../../design_system.dart';
 
-class TemplateTextStylesExtension extends ThemeExtension<TemplateTextStylesExtension> {
+class AppTextStylesExtension extends ThemeExtension<AppTextStylesExtension> {
   final TextStyle headingH1;
   final TextStyle headingH2;
   final TextStyle headingH3;
@@ -16,7 +16,7 @@ class TemplateTextStylesExtension extends ThemeExtension<TemplateTextStylesExten
   final TextStyle paragraphSmall;
   final TextStyle paragraphXSmall;
 
-  TemplateTextStylesExtension({
+  const AppTextStylesExtension({
     required this.headingH1,
     required this.headingH2,
     required this.headingH3,
@@ -29,69 +29,69 @@ class TemplateTextStylesExtension extends ThemeExtension<TemplateTextStylesExten
     required this.paragraphXSmall,
   });
 
-  static TemplateTextStylesExtension get() {
-    return TemplateTextStylesExtension(
-      headingH1: GoogleFonts.mavenPro(
+  static AppTextStylesExtension get() {
+    return AppTextStylesExtension(
+      headingH1: GoogleFonts.instrumentSans(
         fontSize: 36,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
         letterSpacing: -0.02 * 36,
       ),
-      headingH2: GoogleFonts.mavenPro(
+      headingH2: GoogleFonts.instrumentSans(
         fontSize: 32,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
         letterSpacing: -0.02 * 32,
       ),
-      headingH3: GoogleFonts.mavenPro(
+      headingH3: GoogleFonts.instrumentSans(
         fontSize: 28,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
         letterSpacing: -0.02 * 28,
       ),
       headingH4: GoogleFonts.mavenPro(
         fontSize: 24,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
         letterSpacing: -0.02 * 24,
       ),
       headingH5: GoogleFonts.mavenPro(
         fontSize: 20,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
         letterSpacing: -0.02 * 20,
       ),
-      headingH6: GoogleFonts.mavenPro(
+      headingH6: GoogleFonts.instrumentSans(
         fontSize: 18,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
         letterSpacing: -0.02 * 18,
       ),
-      paragraphLarge: GoogleFonts.mavenPro(
+      paragraphLarge: GoogleFonts.instrumentSans(
         fontSize: 18,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
       ),
-      paragraphMedium: GoogleFonts.mavenPro(
+      paragraphMedium: GoogleFonts.instrumentSans(
         fontSize: 16,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
       ),
-      paragraphSmall: GoogleFonts.mavenPro(
+      paragraphSmall: GoogleFonts.instrumentSans(
         fontSize: 14,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
       ),
-      paragraphXSmall: GoogleFonts.mavenPro(
+      paragraphXSmall: GoogleFonts.instrumentSans(
         fontSize: 12,
         fontWeight: FontWeight.normal,
-        color: TemplateColors.neutral900,
+        color: AppColors.neutral900,
       ),
     );
   }
 
   @override
-  TemplateTextStylesExtension copyWith({
+  AppTextStylesExtension copyWith({
     TextStyle? headingH1,
     TextStyle? headingH2,
     TextStyle? headingH3,
@@ -103,7 +103,7 @@ class TemplateTextStylesExtension extends ThemeExtension<TemplateTextStylesExten
     TextStyle? paragraphSmall,
     TextStyle? paragraphXSmall,
   }) {
-    return TemplateTextStylesExtension(
+    return AppTextStylesExtension(
       headingH1: headingH1 ?? this.headingH1,
       headingH2: headingH2 ?? this.headingH2,
       headingH3: headingH3 ?? this.headingH3,
@@ -118,10 +118,7 @@ class TemplateTextStylesExtension extends ThemeExtension<TemplateTextStylesExten
   }
 
   @override
-  ThemeExtension<TemplateTextStylesExtension> lerp(
-    covariant ThemeExtension<TemplateTextStylesExtension>? other,
-    double t,
-  ) {
+  ThemeExtension<AppTextStylesExtension> lerp(covariant ThemeExtension<AppTextStylesExtension>? other, double t) {
     return this;
   }
 }

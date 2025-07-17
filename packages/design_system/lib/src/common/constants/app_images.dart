@@ -1,9 +1,9 @@
 const _assetsPath = 'packages/design_system/assets';
 
-enum TemplateImages {
+enum AppImages {
   icon('$_assetsPath/logo.png');
 
   final String path;
 
-  const TemplateImages(this.path);
+  const AppImages(this.path);
 }

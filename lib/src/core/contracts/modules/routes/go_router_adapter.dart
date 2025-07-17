@@ -10,19 +10,13 @@ abstract class GoRouterAdapter {
       builder: route.builder != null
           ? (context, state) {
               final routeState = _toRouteState(state);
-              return route.builder!(
-                context,
-                routeState,
-              );
+              return route.builder!(context, routeState);
             }
           : null,
       pageBuilder: route.pageBuilder != null
           ? (context, state) {
               final routeState = _toRouteState(state);
-              return route.pageBuilder!(
-                context,
-                routeState,
-              );
+              return route.pageBuilder!(context, routeState);
             }
           : null,
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'template_text_styles_extension.dart';
+import 'app_text_styles_extension.dart';
 
 extension ContextThemeExtension on BuildContext {
-  TemplateTextStylesExtension get texts => Theme.of(this).extension<TemplateTextStylesExtension>()!;
+  AppTextStylesExtension get texts => Theme.of(this).extension<AppTextStylesExtension>()!;
   ColorScheme get colors => Theme.of(this).colorScheme;
 }

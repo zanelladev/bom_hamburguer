@@ -24,10 +24,7 @@ class CustomNavigator {
     );
   }
 
-  Future<T?> push<T extends Object?>(
-    String routePath, {
-    Object? extra,
-  }) {
+  Future<T?> push<T extends Object?>(String routePath, {Object? extra}) {
     return GoRouter.of(context).push(routePath, extra: extra);
   }
 
@@ -45,10 +42,7 @@ class CustomNavigator {
     );
   }
 
-  void go(
-    String routePath, {
-    Object? extra,
-  }) {
+  void go(String routePath, {Object? extra}) {
     GoRouter.of(context).go(routePath, extra: extra);
   }
 
@@ -85,10 +79,7 @@ class CustomNavigator {
     return GoRouter.of(context).refresh();
   }
 
-  Future<T?> replace<T extends Object?>(
-    String routeName, {
-    Object? extra,
-  }) {
+  Future<T?> replace<T extends Object?>(String routeName, {Object? extra}) {
     return GoRouter.of(context).replace(routeName, extra: extra);
   }
 

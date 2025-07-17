@@ -7,10 +7,8 @@ abstract class AppFailure extends AppError {
   ///
   /// - [message]: The message describing the failure.
   /// - [code]: The code of the failure.
-  const AppFailure({
-    required super.message,
-    required super.code,
-  }) : super(stackTrace: StackTrace.empty);
+  const AppFailure({required super.message, required super.code})
+    : super(stackTrace: StackTrace.empty);
 }
 
 /// A base class for representing exceptions in the application.
@@ -56,6 +54,7 @@ sealed class AppError {
 
   @override
   String toString() {
-    return '${runtimeType.runtimeType}: $message\n' '$stackTrace';
+    return '${runtimeType.runtimeType}: $message\n'
+        '$stackTrace';
   }
 }

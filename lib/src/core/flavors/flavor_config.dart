@@ -10,10 +10,7 @@ class FlavorConfig {
   final String baseUrl;
 
   /// Constructs a [FlavorConfig].
-  const FlavorConfig({
-    required this.apiKey,
-    required this.baseUrl,
-  });
+  const FlavorConfig({required this.apiKey, required this.baseUrl});
 
   /// Factory constructor that creates a [FlavorConfig] from environment variables.
   ///

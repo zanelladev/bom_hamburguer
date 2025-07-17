@@ -22,21 +22,21 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Template Debug",
+        "name": "Bom Hamburguer Debug",
         "type": "dart",
         "request": "launch",
         "cwd": "${workspaceFolder:template}",
         "flutterMode": "debug"
       },
       {
-        "name": "Template Profile",
+        "name": "Bom Hamburguer Profile",
         "type": "dart",
         "request": "launch",
         "cwd": "${workspaceFolder:template}",
         "flutterMode": "profile"
       },
       {
-        "name": "Template Release",
+        "name": "Bom Hamburguer Release",
         "type": "dart",
         "request": "launch",
         "cwd": "${workspaceFolder:template}",

@@ -5,14 +5,13 @@ import 'presenter/pages/home_page.dart';
 class HomeModuleRoutes extends ModuleRoutes {
   @override
   List<BaseRoute> get routes => [
-        BaseRoute(
-          name: HomeRoutesEnum.home.name,
-          path: HomeRoutesEnum.home.path,
-          builder: (context, state) => HomePage(
-            controller: ServiceLocator.instance.get<HomeController>(),
-          ),
-        ),
-      ];
+    BaseRoute(
+      name: HomeRoutesEnum.home.name,
+      path: HomeRoutesEnum.home.path,
+      builder: (context, state) =>
+          HomePage(controller: ServiceLocator.instance.get<HomeController>()),
+    ),
+  ];
 }
 
 enum HomeRoutesEnum {

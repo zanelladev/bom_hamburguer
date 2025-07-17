@@ -43,7 +43,10 @@ class SecureStorageService implements IStorageService {
 
   /// Saves a JSON object to secure storage with the given [key].
   @override
-  Future<void> saveJson({required String key, required Map<String, dynamic> json}) async {
+  Future<void> saveJson({
+    required String key,
+    required Map<String, dynamic> json,
+  }) async {
     try {
       await _secureStorage.write(key: key, value: jsonEncode(json));
     } catch (exception, stackTrace) {
@@ -56,7 +59,10 @@ class SecureStorageService implements IStorageService {
 
   /// Saves a list of JSON objects to secure storage with the given [key].
   @override
-  Future<void> saveJsonList({required String key, required List<Map<String, dynamic>> jsonList}) async {
+  Future<void> saveJsonList({
+    required String key,
+    required List<Map<String, dynamic>> jsonList,
+  }) async {
     try {
       final encodedList = jsonEncode(jsonList);
       await _secureStorage.write(key: key, value: encodedList);

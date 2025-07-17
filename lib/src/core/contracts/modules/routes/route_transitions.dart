@@ -1,4 +1,1 @@
-enum RouteTransitions {
-  none,
-  standard,
-}
+enum RouteTransitions { none, standard }

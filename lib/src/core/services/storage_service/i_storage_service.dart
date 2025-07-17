@@ -23,8 +23,14 @@ abstract interface class IQueryStorageService {
 /// to storage.
 abstract interface class ICommandStorageService {
   /// Saves a JSON object to storage.
-  Future<void> saveJson({required String key, required Map<String, dynamic> json});
+  Future<void> saveJson({
+    required String key,
+    required Map<String, dynamic> json,
+  });
 
   /// Saves a list of JSON objects to storage.
-  Future<void> saveJsonList({required String key, required List<Map<String, dynamic>> jsonList});
+  Future<void> saveJsonList({
+    required String key,
+    required List<Map<String, dynamic>> jsonList,
+  });
 }

@@ -54,9 +54,9 @@ pubspec.lock
 .metadata
 .DS_Store
 pubspec_overrides.yaml
-.fvm
 
 # Remove environment file
 env.json
 
-
+# FVM Version Cache
+.fvm/
