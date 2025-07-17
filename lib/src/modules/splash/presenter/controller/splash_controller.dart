@@ -1,3 +1,0 @@
-class SplashController {
-  const SplashController();
-}

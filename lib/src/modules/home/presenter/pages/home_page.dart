@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../controller/splash_controller.dart';
+import '../controller/home_controller.dart';
 
-class SplashPage extends StatelessWidget {
-  final SplashController controller;
+class HomePage extends StatelessWidget {
+  final HomeController controller;
 
-  const SplashPage({
+  const HomePage({
     super.key,
     required this.controller,
   });
