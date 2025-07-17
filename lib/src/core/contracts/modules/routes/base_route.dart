@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'route_transitions.dart';
-import 'routes.dart';
 
 class RouteParams {
   final Map<String, String>? queryParameters;
@@ -16,13 +15,15 @@ class RouteParams {
 }
 
 class BaseRoute {
-  final Routes route;
+  final String name;
+  final String path;
   final Widget Function(BuildContext context, RouteParams params)? builder;
   final Page<dynamic> Function(BuildContext context, RouteParams params)? pageBuilder;
   final RouteTransitions transition;
 
   const BaseRoute({
-    required this.route,
+    required this.name,
+    required this.path,
     this.builder,
     this.pageBuilder,
     this.transition = RouteTransitions.standard,

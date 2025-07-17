@@ -5,8 +5,8 @@ import 'base_route.dart';
 abstract class GoRouterAdapter {
   static GoRoute toGoRouter(BaseRoute route) {
     return GoRoute(
-      path: route.route.path,
-      name: route.route.name,
+      path: route.path,
+      name: route.name,
       builder: route.builder != null
           ? (context, state) {
               final routeState = _toRouteState(state);

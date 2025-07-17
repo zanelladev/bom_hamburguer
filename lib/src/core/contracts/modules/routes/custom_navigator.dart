@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'routes.dart';
-
 class CustomNavigator {
   final BuildContext context;
 
@@ -13,37 +11,45 @@ class CustomNavigator {
   }
 
   Future<T?> pushNamed<T extends Object?>(
-    Routes route, {
+    String routeName, {
     Map<String, String> pathParameters = const {},
     Map<String, dynamic> queryParameters = const {},
     Object? extra,
   }) {
-    return GoRouter.of(context)
-        .pushNamed(route.name, queryParameters: queryParameters, pathParameters: pathParameters, extra: extra);
+    return GoRouter.of(context).pushNamed(
+      routeName,
+      queryParameters: queryParameters,
+      pathParameters: pathParameters,
+      extra: extra,
+    );
   }
 
   Future<T?> push<T extends Object?>(
-    Routes route, {
+    String routePath, {
     Object? extra,
   }) {
-    return GoRouter.of(context).push(route.path, extra: extra);
+    return GoRouter.of(context).push(routePath, extra: extra);
   }
 
   void goNamed(
-    Routes route, {
+    String routeName, {
     Map<String, String> pathParameters = const {},
     Map<String, dynamic> queryParameters = const {},
     Object? extra,
   }) {
-    GoRouter.of(context)
-        .goNamed(route.name, queryParameters: queryParameters, pathParameters: pathParameters, extra: extra);
+    GoRouter.of(context).goNamed(
+      routeName,
+      queryParameters: queryParameters,
+      pathParameters: pathParameters,
+      extra: extra,
+    );
   }
 
   void go(
-    Routes route, {
+    String routePath, {
     Object? extra,
   }) {
-    GoRouter.of(context).go(route.path, extra: extra);
+    GoRouter.of(context).go(routePath, extra: extra);
   }
 
   void pop<T extends Object?>([T? result]) {
@@ -55,13 +61,13 @@ class CustomNavigator {
   }
 
   Future<T?> pushReplacementNamed<T extends Object?>(
-    Routes route, {
+    String routeName, {
     Map<String, String> pathParameters = const {},
     Map<String, dynamic> queryParameters = const {},
     Object? extra,
   }) {
     return GoRouter.of(context).pushReplacementNamed(
-      route.name,
+      routeName,
       queryParameters: queryParameters,
       pathParameters: pathParameters,
       extra: extra,
@@ -69,10 +75,10 @@ class CustomNavigator {
   }
 
   Future<T?> pushReplacement<T extends Object?>(
-    Routes route, {
+    String routeName, {
     Object? extra,
   }) {
-    return GoRouter.of(context).pushReplacement(route.path, extra: extra);
+    return GoRouter.of(context).pushReplacement(routeName, extra: extra);
   }
 
   void refresh() {
@@ -80,20 +86,20 @@ class CustomNavigator {
   }
 
   Future<T?> replace<T extends Object?>(
-    Routes route, {
+    String routeName, {
     Object? extra,
   }) {
-    return GoRouter.of(context).replace(route.path, extra: extra);
+    return GoRouter.of(context).replace(routeName, extra: extra);
   }
 
   Future<T?> replaceNamed<T extends Object?>(
-    Routes route, {
+    String routeName, {
     Map<String, String> pathParameters = const {},
     Map<String, dynamic> queryParameters = const {},
     Object? extra,
   }) {
     return GoRouter.of(context).replaceNamed(
-      route.path,
+      routeName,
       queryParameters: queryParameters,
       pathParameters: pathParameters,
       extra: extra,

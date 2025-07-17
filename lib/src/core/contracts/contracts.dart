@@ -1,4 +1,9 @@
 export 'dto_contract.dart';
 export 'entity_contract.dart';
 export 'modules/app_module.dart';
+export 'modules/routes/base_route.dart';
+export 'modules/routes/go_router_adapter.dart';
+export 'modules/routes/module_routes.dart';
+export 'modules/routes/navigator_extension.dart';
+export 'modules/routes/route_transitions.dart';
 export 'usecase_contract.dart';
