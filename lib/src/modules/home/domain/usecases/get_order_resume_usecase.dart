@@ -6,7 +6,7 @@ import '../value_objects/order_resume_vo.dart';
 class GetOrderResumeUsecase implements AsyncUsecaseWithParamsContract<OrderResumeVO, OrderDto> {
   final IOrderRepository repository;
 
-  GetOrderResumeUsecase(this.repository);
+  const GetOrderResumeUsecase(this.repository);
 
   @override
   AsyncResult<OrderResumeVO> execute(OrderDto dto) {
