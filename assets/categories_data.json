@@ -15,13 +15,15 @@
                 "id": 2,
                 "name": "X Egg",
                 "price": 4.5,
-                "description": "A burger with a fried egg on top."
+                "description": "A burger with a fried egg on top.",
+                "imageUrl": "https://cdn.discordapp.com/attachments/573662387115393025/1395904969881686096/x-egg-73519.png?ex=687c254f&is=687ad3cf&hm=76c2aaf01c8e7e9d0b974857e8beaa4c41ccfd7ccfa9da48fb9d4395789aecb8"
             },
             {
                 "id": 3,
                 "name": "X Bacon",
                 "price": 7.0,
-                "description": "A delicious burger with crispy bacon."
+                "description": "A delicious burger with crispy bacon.",
+                "imageUrl": "https://media.discordapp.net/attachments/573662387115393025/1395905076245299294/15399aa8-5d10-4941-92b5-6f52a7c6b200.png?ex=687c2568&is=687ad3e8&hm=805ff4fa01048c847ff6012e7f5b3c88e9792a505259e2e4c0881749f75f15ff&=&format=webp&quality=lossless&width=400&height=400"
             }
         ]
     },
@@ -34,12 +36,15 @@
                 "id": 4,
                 "name": "Fries",
                 "price": 2.0,
-                "description": "Crispy golden fries served with ketchup."
+                "description": "Crispy golden fries served with ketchup.",
+                "imageUrl": "https://media.discordapp.net/attachments/573662387115393025/1395905184479182940/hikynvl8pjkjqhvpnok6_1200x1200.png?ex=687c2582&is=687ad402&hm=1692f63c848c78fed986256ea3ba24b0c795d3e302063aa699b1b1896252ef55&=&format=webp&quality=lossless&width=2022&height=1536"
             },
             {
                 "id": 5,
                 "name": "Soft drink",
-                "price": 2.5
+                "price": 2.5,
+                "description": "A refreshing soft drink to complement your meal.",
+                "imageUrl": "https://media.discordapp.net/attachments/573662387115393025/1395905480437792828/Sprite-Soft-Drink-Can-300ml.png?ex=687c25c9&is=687ad449&hm=cfd4288f0536007c127dce8c346a8d85f2c02f2ca23a71bf971efad050777242&=&format=webp&quality=lossless&width=1744&height=1744"
             }
         ]
     }
