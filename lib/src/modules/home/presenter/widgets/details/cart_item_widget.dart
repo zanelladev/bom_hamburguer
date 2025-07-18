@@ -2,6 +2,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/item_entity.dart';
+import '../../constants/order_details_resources.dart';
 
 class CartItemWidget extends StatelessWidget {
   final ItemEntity item;
@@ -38,7 +39,7 @@ class CartItemWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '\$ ${item.price.toStringAsFixed(2)}',
+                      OrderDetailsResources.orderValue(item.price),
                       style: context.texts.paragraphMedium,
                     ),
                   ],

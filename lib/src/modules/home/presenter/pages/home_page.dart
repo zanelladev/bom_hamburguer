@@ -1,6 +1,7 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/home_resources.dart';
 import '../controllers/categories_controller.dart';
 import '../controllers/categories_state.dart';
 import '../controllers/order_controller.dart';
@@ -32,6 +33,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          HomeResources.homeTitle,
+          style: context.texts.headingH6.copyWith(
+            color: AppColors.neutral900,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       bottomSheet: OrderCardBottomSheetWidget(
         controller: widget.orderController,
         onOrderConfirmed: widget.categoriesController.clearSelection,
@@ -59,7 +69,7 @@ class _HomePageState extends State<HomePage> {
             if (state.isEmpty) {
               return Center(
                 child: Text(
-                  'No categories available',
+                  HomeResources.noCategoriesAvailable,
                   style: context.texts.paragraphMedium,
                 ),
               );

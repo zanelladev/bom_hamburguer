@@ -2,6 +2,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../constants/order_details_resources.dart';
 import '../controllers/order_controller.dart';
 import '../controllers/order_state.dart';
 import '../widgets/details/cart_item_widget.dart';
@@ -33,7 +34,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          'Order Details',
+          OrderDetailsResources.title,
           style: context.texts.headingH6.copyWith(
             color: AppColors.neutral900,
             fontWeight: FontWeight.bold,
@@ -55,11 +56,11 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                         return const Center(child: CircularProgressIndicator());
                       }
 
-                      if (state.isError) {
+                      if (state is OrderErrorState) {
                         return Center(
                           child: Text(
-                            'Error loading order details',
-                            style: context.texts.paragraphMedium.copyWith(color: Colors.red),
+                            state.error.message,
+                            style: context.texts.paragraphMedium.copyWith(color: AppColors.destructive500),
                           ),
                         );
                       }
@@ -84,7 +85,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                               ),
                               const SizedBox(height: AppSizes.sizeMd),
                               Text(
-                                'Summary of values',
+                                OrderDetailsResources.summaryOfValues,
                                 style: context.texts.paragraphMedium.copyWith(
                                   color: AppColors.neutral900,
                                   fontWeight: FontWeight.bold,
@@ -95,13 +96,13 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Subtotal',
+                                    OrderDetailsResources.subtotal,
                                     style: context.texts.paragraphMedium.copyWith(
                                       color: AppColors.neutral600,
                                     ),
                                   ),
                                   Text(
-                                    '\$ ${state.orderResume.subtotal.toStringAsFixed(2)}',
+                                    OrderDetailsResources.orderValue(state.orderResume.subtotal),
                                     style: context.texts.paragraphMedium.copyWith(
                                       color: AppColors.neutral900,
                                     ),
@@ -116,13 +117,13 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'Discount',
+                                        OrderDetailsResources.discount,
                                         style: context.texts.paragraphMedium.copyWith(
                                           color: AppColors.neutral600,
                                         ),
                                       ),
                                       Text(
-                                        '- \$ ${state.orderResume.discount.toStringAsFixed(2)} (${state.orderResume.discountPercentage.toStringAsFixed(0)}% off)',
+                                        '- ${OrderDetailsResources.orderValue(state.orderResume.discount)} (${state.orderResume.discountPercentage.toStringAsFixed(0)}% off)',
                                         style: context.texts.paragraphMedium.copyWith(
                                           color: AppColors.success500,
                                         ),
@@ -136,14 +137,14 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Total',
+                                    OrderDetailsResources.total,
                                     style: context.texts.paragraphMedium.copyWith(
                                       color: AppColors.neutral900,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
-                                    '\$ ${state.orderResume.total.toStringAsFixed(2)}',
+                                    OrderDetailsResources.orderValue(state.orderResume.total),
                                     style: context.texts.paragraphMedium.copyWith(
                                       color: AppColors.neutral900,
                                       fontWeight: FontWeight.bold,
@@ -153,11 +154,11 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                               ),
                               const SizedBox(height: AppSizes.sizeMd),
                               AppTextFormField(
-                                label: 'Customer Name',
-                                hint: 'Enter customer name',
+                                label: OrderDetailsResources.customerName,
+                                hint: OrderDetailsResources.customerNameHint,
                                 onChanged: widget.orderController.onCustomerNameChanged,
                                 validator: (value) {
-                                  if (value == null || value.isEmpty) return 'Customer name cannot be empty';
+                                  if (value == null || value.isEmpty) return OrderDetailsResources.customerNameRequired;
 
                                   return null;
                                 },
@@ -167,9 +168,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                         );
                       }
 
-                      return Center(
-                        child: Text('No order details available', style: context.texts.paragraphMedium),
-                      );
+                      return SizedBox();
                     },
                   ),
                 ),
@@ -178,7 +177,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                   children: [
                     Expanded(
                       child: AppElevatedButton(
-                        label: 'Confirm Order',
+                        label: OrderDetailsResources.confirmOrder,
                         backgroundColor: AppColors.success500,
                         textColor: AppColors.neutral050,
                         onPressed: () {

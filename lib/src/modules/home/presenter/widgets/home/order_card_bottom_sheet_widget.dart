@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../home_module_routes.dart';
+import '../../constants/home_resources.dart';
 import '../../controllers/order_controller.dart';
 import '../../controllers/order_state.dart';
 
@@ -45,7 +46,7 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Total Order',
+                      HomeResources.totalOrder,
                       style: context.texts.paragraphSmall.copyWith(
                         color: AppColors.neutral600,
                       ),
@@ -69,7 +70,7 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
                           return Row(
                             children: [
                               Text(
-                                '\$ ${state.orderResume.total.toStringAsFixed(2)} ',
+                                HomeResources.orderValue(state.orderResume.total),
                                 style: context.texts.paragraphMedium.copyWith(
                                   color: AppColors.success500,
                                   fontWeight: FontWeight.bold,
@@ -77,7 +78,7 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
                               ),
                               SizedBox(width: 4),
                               Text(
-                                '/ ${state.orderResume.items.length} items',
+                                HomeResources.orderItemsCount(state.orderResume.items.length),
                                 style: context.texts.paragraphSmall.copyWith(
                                   color: AppColors.neutral600,
                                 ),
@@ -85,7 +86,7 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
                               Visibility(
                                 visible: state.orderResume.discountPercentage > 0,
                                 child: Text(
-                                  ' (${state.orderResume.discountPercentage.toStringAsFixed(0)}% off)',
+                                  HomeResources.orderDiscount(state.orderResume.discountPercentage),
                                   style: context.texts.paragraphSmall.copyWith(
                                     color: AppColors.neutral600,
                                   ),
@@ -105,7 +106,7 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
               Visibility(
                 visible: state is OrderLoadedState,
                 child: AppElevatedButton(
-                  label: 'Detail Order',
+                  label: HomeResources.detailOrder,
                   onPressed: () {
                     context.pushNamed(HomeRoutesEnum.orderDetails.name).then((value) {
                       if (value == true) {
