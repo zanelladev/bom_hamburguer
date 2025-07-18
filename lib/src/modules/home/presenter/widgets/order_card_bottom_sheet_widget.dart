@@ -17,17 +17,27 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
         if (state.isInitial) return const SizedBox.shrink();
 
         return Container(
+          width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.neutral900.withValues(alpha: 0.2),
+                blurRadius: 10,
+                offset: const Offset(0, -2),
+              ),
+            ],
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Total',
-                style: context.texts.paragraphMedium,
+                'Total Order',
+                style: context.texts.paragraphSmall.copyWith(
+                  color: AppColors.neutral600,
+                ),
               ),
               const SizedBox(height: 8),
               Builder(builder: (context) {
@@ -39,14 +49,29 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
                 }
 
                 if (state is OrderLoadedState) {
-                  return Text(
-                    ': ${state.orderResume.total}',
-                    style: context.texts.paragraphMedium,
+                  return Row(
+                    children: [
+                      Text(
+                        '\$ ${state.orderResume.total.toStringAsFixed(2)}',
+                        style: context.texts.paragraphMedium.copyWith(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        '/ ${state.orderResume.itemsCount} items',
+                        style: context.texts.paragraphSmall.copyWith(
+                          color: AppColors.neutral600,
+                        ),
+                      ),
+                    ],
                   );
                 }
 
                 return const SizedBox.shrink();
               }),
+              const SizedBox(height: 24),
             ],
           ),
         );

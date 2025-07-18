@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
+import '../../../../core/constants/data_constants.dart';
 import '../../../../core/core.dart';
 import '../../domain/entities/category_entity.dart';
 import '../../domain/repositories/i_category_repository.dart';
@@ -13,9 +14,7 @@ class CategoryRepository implements ICategoryRepository {
     try {
       await Future.delayed(const Duration(seconds: 1));
 
-      String jsonString = await rootBundle.loadString(
-        'assets/categories_data.json',
-      );
+      final jsonString = await rootBundle.loadString(DataConstants.categoriesData);
 
       final List<dynamic> jsonList = json.decode(jsonString) as List<dynamic>;
 

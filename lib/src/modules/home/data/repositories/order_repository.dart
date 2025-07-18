@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
+import '../../../../core/constants/data_constants.dart';
 import '../../../../core/core.dart';
 import '../../domain/dtos/order_item_dto.dart';
 import '../../domain/entities/category_entity.dart';
@@ -13,9 +14,7 @@ class OrderRepository implements IOrderRepository {
   @override
   AsyncResult<OrderResumeVO> getOrderResume(OrderDto dto) async {
     try {
-      String jsonString = await rootBundle.loadString(
-        'assets/categories_data.json',
-      );
+      final jsonString = await rootBundle.loadString(DataConstants.categoriesData);
 
       final List<dynamic> jsonList = json.decode(jsonString) as List<dynamic>;
 
@@ -59,6 +58,7 @@ class OrderRepository implements IOrderRepository {
         subtotal: subtotal,
         discount: discount,
         discountPercentage: discountPercentage,
+        itemsCount: dto.items.length,
       ));
     } catch (e) {
       return left(FailedToGetOrderResume());

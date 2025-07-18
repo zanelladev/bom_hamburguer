@@ -46,7 +46,9 @@ class _HomePageState extends State<HomePage> {
               return Center(
                 child: Text(
                   state.error.message,
-                  style: context.texts.paragraphMedium.copyWith(color: Colors.red),
+                  style: context.texts.paragraphMedium.copyWith(
+                    color: Colors.red,
+                  ),
                 ),
               );
             }
@@ -69,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return CategoryWidget(
                           category: state.categories[index],
-                          toggleItemSelection: widget.categoriesController.toggleItemSelection,
+                          toggleItemSelection: _toggleItemSelection,
                         );
                       },
                     ),
@@ -85,7 +87,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void toggleItemSelection(int itemId) {
+  void _toggleItemSelection(int itemId) {
     widget.categoriesController.toggleItemSelection(itemId);
 
     final itemsId = widget.categoriesController.value.categories
