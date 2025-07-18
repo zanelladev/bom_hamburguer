@@ -19,7 +19,6 @@ class HomeModuleInjections extends ModuleInjections {
       () => GetCategoriesUsecase(ServiceLocator.instance.get<ICategoryRepository>()),
     );
 
-    // TODO: rever
     ServiceLocator.instance.bindSingleton<CategoriesController>(CategoriesController(
       ServiceLocator.instance.get<GetCategoriesUsecase>(),
     ));

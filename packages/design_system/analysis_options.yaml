@@ -30,3 +30,4 @@ linter:
     unnecessary_parenthesis: true
     use_named_constants: true
     use_setters_to_change_properties: false
+    library_private_types_in_public_api: false
