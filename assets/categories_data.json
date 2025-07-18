@@ -1,36 +1,43 @@
 [
     {
+        "id": 1,
         "name": "Sandwich",
         "type": "sandwich",
         "items": [
             {
+                "id": 1,
                 "name": "X Burger",
-                "price": 5,
+                "price": 5.0,
                 "description": "A classic burger with lettuce and tomato.",
                 "imageUrl": "https://static.vecteezy.com/system/resources/previews/027/143/844/non_2x/delicious-cheese-burger-on-transparent-background-png.png"
             },
             {
+                "id": 2,
                 "name": "X Egg",
                 "price": 4.5,
                 "description": "A burger with a fried egg on top."
             },
             {
+                "id": 3,
                 "name": "X Bacon",
-                "price": 7,
+                "price": 7.0,
                 "description": "A delicious burger with crispy bacon."
             }
         ]
     },
     {
+        "id": 2,
         "name": "Extras",
         "type": "extras",
         "items": [
             {
+                "id": 4,
                 "name": "Fries",
-                "price": 2,
+                "price": 2.0,
                 "description": "Crispy golden fries served with ketchup."
             },
             {
+                "id": 5,
                 "name": "Soft drink",
                 "price": 2.5
             }

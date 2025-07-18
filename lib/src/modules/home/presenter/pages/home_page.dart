@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 
 import '../controllers/categories_controller.dart';
 import '../controllers/categories_state.dart';
+import '../controllers/order_controller.dart';
 
 class HomePage extends StatefulWidget {
   final CategoriesController controller;
+  final OrderController orderController;
 
   const HomePage({
     super.key,
     required this.controller,
+    required this.orderController,
   });
 
   @override

@@ -1,23 +1,67 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 import '../../../../core/core.dart';
 import '../../domain/dtos/order_item_dto.dart';
+import '../../domain/entities/category_entity.dart';
 import '../../domain/repositories/i_order_repository.dart';
 import '../../domain/value_objects/order_resume_vo.dart';
-import '../exceptions/category_exceptions.dart';
+import '../exceptions/order_exceptions.dart';
 
 class OrderRepository implements IOrderRepository {
   @override
-  AsyncResult<OrderResumeVO> getOrderResume(OrderDto dto) {
+  AsyncResult<OrderResumeVO> getOrderResume(OrderDto dto) async {
     try {
+      String jsonString = await rootBundle.loadString(
+        'assets/categories_data.json',
+      );
+
+      final List<dynamic> jsonList = json.decode(jsonString) as List<dynamic>;
+
+      final categories = jsonList.map((json) {
+        return CategoryEntity.fromMap(json as Map<String, dynamic>);
+      }).toList();
+
+      double subtotal = 0;
+      final selectedIds = dto.items.map((item) => item.id).toSet();
+
+      for (final orderItem in dto.items) {
+        final category = categories.firstWhere(
+          (cat) => cat.items.any((item) => item.id == orderItem.id),
+          orElse: () => throw Exception('Item ID ${orderItem.id} not found.'),
+        );
+
+        final item = category.items.firstWhere((item) => item.id == orderItem.id);
+
+        subtotal += item.price * orderItem.count;
+      }
+
+      double discountPercentage = 0;
+
+      final hasSandwich = selectedIds.any((id) => [1, 2, 3].contains(id));
+      final hasFries = selectedIds.contains(4);
+      final hasSoftDrink = selectedIds.contains(5);
+
+      if (hasSandwich && hasFries && hasSoftDrink) {
+        discountPercentage = 20;
+      } else if (hasSandwich && hasSoftDrink) {
+        discountPercentage = 15;
+      } else if (hasSandwich && hasFries) {
+        discountPercentage = 10;
+      }
+
+      final discount = subtotal * (discountPercentage / 100);
+      final total = subtotal - discount;
+
       return right(OrderResumeVO(
-        total: 1,
-        subtotal: 1,
-        discount: 0,
+        total: total,
+        subtotal: subtotal,
+        discount: discount,
+        discountPercentage: discountPercentage,
       ));
-    } catch (e, st) {
-      return left(GetCategoriesException(
-        message: 'Failed to get categories',
-        stackTrace: st,
-      ));
+    } catch (e) {
+      return left(FailedToGetOrderResume());
     }
   }
 }

@@ -35,7 +35,7 @@ class CategoryEntity {
       name: map['name'] as String,
       type: CategoryTypeEnum.fromString(map['type'] as String),
       items: List<ItemEntity>.from(
-        (map['items'] as List<int>).map<ItemEntity>(
+        (map['items'] as List).map<ItemEntity>(
           (x) => ItemEntity.fromMap(x as Map<String, dynamic>),
         ),
       ),

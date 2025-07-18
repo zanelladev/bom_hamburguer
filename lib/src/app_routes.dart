@@ -24,6 +24,8 @@ class AppRouter {
   }
 
   List<ModuleRoutes> get modulesRoutes {
-    return [HomeModuleRoutes()];
+    return [
+      HomeModuleRoutes(),
+    ];
   }
 }
