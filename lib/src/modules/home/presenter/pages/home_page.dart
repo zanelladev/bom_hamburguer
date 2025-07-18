@@ -5,14 +5,15 @@ import '../controllers/categories_controller.dart';
 import '../controllers/categories_state.dart';
 import '../controllers/order_controller.dart';
 import '../widgets/category_widget.dart';
+import '../widgets/order_card_bottom_sheet_widget.dart';
 
 class HomePage extends StatefulWidget {
-  final CategoriesController controller;
+  final CategoriesController categoriesController;
   final OrderController orderController;
 
   const HomePage({
     super.key,
-    required this.controller,
+    required this.categoriesController,
     required this.orderController,
   });
 
@@ -25,16 +26,17 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    widget.controller.fetchCategories();
+    widget.categoriesController.fetchCategories();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: OrderCardBottomSheetWidget(widget.orderController),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ValueListenableBuilder(
-          valueListenable: widget.controller,
+          valueListenable: widget.categoriesController,
           builder: (context, state, child) {
             if (state.isLoading) {
               return const Center(child: CircularProgressIndicator());
@@ -67,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return CategoryWidget(
                           category: state.categories[index],
-                          toggleItemSelection: widget.controller.toggleItemSelection,
+                          toggleItemSelection: widget.categoriesController.toggleItemSelection,
                         );
                       },
                     ),
@@ -84,10 +86,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   void toggleItemSelection(int itemId) {
-    widget.controller.toggleItemSelection(itemId);
+    widget.categoriesController.toggleItemSelection(itemId);
 
-    // widget.controller.value.categories;
+    final itemsId = widget.categoriesController.value.categories
+        .expand((category) => category.items)
+        .where((item) => item.isSelected)
+        .map((item) => item.id)
+        .toList();
 
-    // widget.orderController.addItemToOrder(itemId);
+    widget.orderController.getOrder(itemsId);
   }
 }

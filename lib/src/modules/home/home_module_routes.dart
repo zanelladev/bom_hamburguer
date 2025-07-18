@@ -11,7 +11,7 @@ class HomeModuleRoutes extends ModuleRoutes {
           path: HomeRoutesEnum.home.path,
           builder: (context, state) {
             return HomePage(
-              controller: ServiceLocator.instance.get<CategoriesController>(),
+              categoriesController: ServiceLocator.instance.get<CategoriesController>(),
               orderController: ServiceLocator.instance.get<OrderController>(),
             );
           },

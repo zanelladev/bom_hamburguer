@@ -2,6 +2,7 @@ import '../../../../core/core.dart';
 import '../../domain/entities/category_entity.dart';
 
 sealed class CategoriesState {
+  bool get isInitial => this is CategoriesInitialState;
   bool get isLoading => this is CategoriesLoadingState;
   bool get isEmpty => this is CategoriesEmptyState;
   bool get isError => this is CategoriesErrorState;

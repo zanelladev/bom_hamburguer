@@ -31,8 +31,8 @@ class HomeModuleInjections extends ModuleInjections {
       () => GetOrderResumeUsecase(ServiceLocator.instance.get<IOrderRepository>()),
     );
 
-    ServiceLocator.instance.bindFactory<OrderController>(() => OrderController(
-          ServiceLocator.instance.get<GetOrderResumeUsecase>(),
-        ));
+    ServiceLocator.instance.bindSingleton<OrderController>(OrderController(
+      ServiceLocator.instance.get<GetOrderResumeUsecase>(),
+    ));
   }
 }

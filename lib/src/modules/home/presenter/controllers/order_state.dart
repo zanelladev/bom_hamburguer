@@ -2,6 +2,7 @@ import '../../../../core/core.dart';
 import '../../domain/value_objects/order_resume_vo.dart';
 
 sealed class OrderState {
+  bool get isInitial => this is OrderInitialState;
   bool get isLoading => this is OrderLoadingState;
   bool get isError => this is OrderErrorState;
   bool get isLoaded => this is OrderLoadedState;
