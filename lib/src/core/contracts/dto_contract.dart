@@ -20,5 +20,5 @@ abstract class DTOValidate extends DTO {
   /// Validates the DTO and returns an [Either] containing either an [AppFailure] or the valid [DTO].
   ///
   /// Implement this method to provide custom validation logic for the DTO.
-  Either<AppFailure, DTO> validate();
+  Result<DTO> validate();
 }
