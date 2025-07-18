@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class ItemEntity {
   final int id;
   final String name;
@@ -16,7 +18,6 @@ class ItemEntity {
   });
 
   ItemEntity copyWith({
-    int? id,
     String? name,
     double? price,
     String? description,
@@ -24,7 +25,7 @@ class ItemEntity {
     bool? isSelected,
   }) {
     return ItemEntity(
-      id: id ?? this.id,
+      id: id,
       name: name ?? this.name,
       price: price ?? this.price,
       description: description ?? this.description,
@@ -32,4 +33,16 @@ class ItemEntity {
       isSelected: isSelected ?? this.isSelected,
     );
   }
+
+  factory ItemEntity.fromMap(Map<String, dynamic> map) {
+    return ItemEntity(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      price: map['price'] as double,
+      description: map['description'] != null ? map['description'] as String : null,
+      imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
+    );
+  }
+
+  factory ItemEntity.fromJson(String source) => ItemEntity.fromMap(json.decode(source) as Map<String, dynamic>);
 }

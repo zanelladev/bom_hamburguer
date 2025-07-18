@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../enums/category_type_enum.dart';
 import 'item_entity.dart';
 
@@ -26,4 +28,19 @@ class CategoryEntity {
       items: items ?? this.items,
     );
   }
+
+  factory CategoryEntity.fromMap(Map<String, dynamic> map) {
+    return CategoryEntity(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      type: CategoryTypeEnum.fromString(map['type'] as String),
+      items: List<ItemEntity>.from(
+        (map['items'] as List<int>).map<ItemEntity>(
+          (x) => ItemEntity.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
+    );
+  }
+
+  factory CategoryEntity.fromJson(String source) => CategoryEntity.fromMap(json.decode(source) as Map<String, dynamic>);
 }
