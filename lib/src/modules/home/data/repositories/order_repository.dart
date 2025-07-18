@@ -53,13 +53,17 @@ class OrderRepository implements IOrderRepository {
       final discount = subtotal * (discountPercentage / 100);
       final total = subtotal - discount;
 
-      return right(OrderResumeVO(
-        total: total,
-        subtotal: subtotal,
-        discount: discount,
-        discountPercentage: discountPercentage,
-        itemsCount: dto.items.length,
-      ));
+      return right(
+        OrderResumeVO(
+          total: total,
+          subtotal: subtotal,
+          discount: discount,
+          discountPercentage: discountPercentage,
+          items: categories.expand((category) {
+            return category.items.where((item) => selectedIds.contains(item.id));
+          }).toList(),
+        ),
+      );
     } catch (e) {
       return left(FailedToGetOrderResume());
     }

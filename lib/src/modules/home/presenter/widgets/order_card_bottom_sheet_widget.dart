@@ -29,49 +29,82 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'Total Order',
-                style: context.texts.paragraphSmall.copyWith(
-                  color: AppColors.neutral600,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Total Order',
+                      style: context.texts.paragraphSmall.copyWith(
+                        color: AppColors.neutral600,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      height: 24,
+                      child: Builder(builder: (context) {
+                        if (state is OrderLoadingState) {
+                          return SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: const CircularProgressIndicator(
+                              strokeWidth: 1,
+                              valueColor: AlwaysStoppedAnimation<Color>(AppColors.neutral400),
+                            ),
+                          );
+                        }
+
+                        if (state is OrderLoadedState) {
+                          return Row(
+                            children: [
+                              Text(
+                                '\$ ${state.orderResume.total.toStringAsFixed(2)} ',
+                                style: context.texts.paragraphMedium.copyWith(
+                                  color: AppColors.success500,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(width: 4),
+                              Text(
+                                '/ ${state.orderResume.items.length} items',
+                                style: context.texts.paragraphSmall.copyWith(
+                                  color: AppColors.neutral600,
+                                ),
+                              ),
+                              Visibility(
+                                visible: state.orderResume.discountPercentage > 0,
+                                child: Text(
+                                  ' (${state.orderResume.discountPercentage.toStringAsFixed(0)}% off)',
+                                  style: context.texts.paragraphSmall.copyWith(
+                                    color: AppColors.neutral600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+
+                        return const SizedBox.shrink();
+                      }),
+                    ),
+                    const SizedBox(height: 24),
+                  ],
                 ),
               ),
-              const SizedBox(height: 8),
-              Builder(builder: (context) {
-                if (state is OrderErrorState) {
-                  return Text(
-                    state.error.message,
-                    style: context.texts.paragraphMedium.copyWith(color: Colors.red),
-                  );
-                }
-
-                if (state is OrderLoadedState) {
-                  return Row(
-                    children: [
-                      Text(
-                        '\$ ${state.orderResume.total.toStringAsFixed(2)}',
-                        style: context.texts.paragraphMedium.copyWith(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        '/ ${state.orderResume.itemsCount} items',
-                        style: context.texts.paragraphSmall.copyWith(
-                          color: AppColors.neutral600,
-                        ),
-                      ),
-                    ],
-                  );
-                }
-
-                return const SizedBox.shrink();
-              }),
-              const SizedBox(height: 24),
+              Visibility(
+                visible: state is OrderLoadedState,
+                child: AppElevatedButton(
+                  label: 'Confirm Order',
+                  onPressed: () {},
+                  isLoading: state.isLoading,
+                  backgroundColor: AppColors.success500,
+                  textColor: AppColors.neutral050,
+                ),
+              ),
             ],
           ),
         );

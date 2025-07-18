@@ -13,9 +13,19 @@ class AppColors {
   static const neutral800 = Color(0xff262626);
   static const neutral900 = Color(0xff171717);
 
-  // Primary colors
-
   // Tones
   static const white = Color(0xffFFFFFF);
   static const black = Color(0xff000000);
+
+  // Success
+  static const success050 = Color(0xffE6F4EA);
+  static const success100 = Color(0xffC8E6C9);
+  static const success200 = Color(0xffA5D6A7);
+  static const success300 = Color(0xff81C784);
+  static const success400 = Color(0xff66BB6A);
+  static const success500 = Color(0xff4CAF50);
+  static const success600 = Color(0xff43A047);
+  static const success700 = Color(0xff388E3C);
+  static const success800 = Color(0xff2E7D32);
+  static const success900 = Color(0xff1B5E20);
 }
