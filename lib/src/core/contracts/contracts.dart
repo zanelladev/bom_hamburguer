@@ -6,4 +6,6 @@ export 'modules/routes/go_router_adapter.dart';
 export 'modules/routes/module_routes.dart';
 export 'modules/routes/navigator_extension.dart';
 export 'modules/routes/route_transitions.dart';
+export 'notifiers/app_notifier.dart';
+export 'notifiers/app_state.dart';
 export 'usecase_contract.dart';

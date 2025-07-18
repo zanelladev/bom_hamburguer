@@ -1,13 +1,11 @@
 {
   "dart.runPubGetOnPubspecChanges": "never",
   "dart.lineLength": 120,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
-  },
   "search.exclude": {
     "/.fvm": true
   },
   "files.watcherExclude": {
     "/.fvm": true
-  }
+  },
+  "dart.flutterSdkPath": ".fvm/versions/3.32.5"
 }
