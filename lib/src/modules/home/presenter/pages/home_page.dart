@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../controllers/categories_controller.dart';
 import '../controllers/categories_state.dart';
 import '../controllers/order_controller.dart';
-import '../widgets/category_widget.dart';
-import '../widgets/order_card_bottom_sheet_widget.dart';
+import '../widgets/home/category_widget.dart';
+import '../widgets/home/order_card_bottom_sheet_widget.dart';
 
 class HomePage extends StatefulWidget {
   final CategoriesController categoriesController;
@@ -32,9 +32,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: OrderCardBottomSheetWidget(widget.orderController),
+      bottomSheet: OrderCardBottomSheetWidget(
+        controller: widget.orderController,
+        onOrderConfirmed: widget.categoriesController.clearSelection,
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: AppSizes.sizeMd),
         child: ValueListenableBuilder(
           valueListenable: widget.categoriesController,
           builder: (context, state, child) {
@@ -47,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   state.error.message,
                   style: context.texts.paragraphMedium.copyWith(
-                    color: Colors.red,
+                    color: AppColors.destructive500,
                   ),
                 ),
               );

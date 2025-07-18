@@ -16,9 +16,21 @@ class OrderLoadingState extends OrderState {}
 
 class OrderLoadedState extends OrderState {
   final OrderResumeVO orderResume;
+  final String customerName;
 
   const OrderLoadedState({
     required this.orderResume,
+    this.customerName = '',
+  });
+}
+
+class OrderConfirmedState extends OrderState {
+  final OrderResumeVO order;
+  final String customerName;
+
+  const OrderConfirmedState({
+    required this.order,
+    this.customerName = '',
   });
 }
 

@@ -1,7 +1,7 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/category_entity.dart';
+import '../../../domain/entities/category_entity.dart';
 import 'item_widget.dart';
 
 class CategoryWidget extends StatelessWidget {

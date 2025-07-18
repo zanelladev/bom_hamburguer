@@ -2,6 +2,7 @@ import '../../core/core.dart';
 import 'presenter/controllers/categories_controller.dart';
 import 'presenter/controllers/order_controller.dart';
 import 'presenter/pages/home_page.dart';
+import 'presenter/pages/order_details_page.dart';
 
 class HomeModuleRoutes extends ModuleRoutes {
   @override
@@ -16,11 +17,21 @@ class HomeModuleRoutes extends ModuleRoutes {
             );
           },
         ),
+        BaseRoute(
+          name: HomeRoutesEnum.orderDetails.name,
+          path: HomeRoutesEnum.orderDetails.path,
+          builder: (context, state) {
+            return OrderDetailsPage(
+              orderController: ServiceLocator.instance.get<OrderController>(),
+            );
+          },
+        ),
       ];
 }
 
 enum HomeRoutesEnum {
-  home('/home', 'home');
+  home('/home', 'home'),
+  orderDetails('/order-details', 'orderDetails');
 
   final String path;
   final String name;

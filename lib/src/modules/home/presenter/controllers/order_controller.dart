@@ -27,4 +27,22 @@ class OrderController extends AppNotifier<OrderState> {
       },
     );
   }
+
+  void onCustomerNameChanged(String name) {
+    if (value is! OrderLoadedState) return;
+
+    final currentState = value as OrderLoadedState;
+    setData(OrderLoadedState(
+      orderResume: currentState.orderResume,
+      customerName: name,
+    ));
+  }
+
+  void confirmOrder() {
+    if (value is! OrderLoadedState) return;
+
+    final order = (value as OrderLoadedState).orderResume;
+
+    setData(OrderConfirmedState(order: order));
+  }
 }

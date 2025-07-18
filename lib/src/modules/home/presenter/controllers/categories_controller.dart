@@ -36,4 +36,14 @@ class CategoriesController extends AppNotifier<CategoriesState> {
 
     setData(CategoriesLoadedState(categories: categories));
   }
+
+  void clearSelection() {
+    if (value is! CategoriesLoadedState) return;
+
+    final categories = value.categories.map((category) {
+      return category.clearSelection();
+    }).toList();
+
+    setData(CategoriesLoadedState(categories: categories));
+  }
 }

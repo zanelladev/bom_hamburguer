@@ -11,6 +11,11 @@ extension UpdateCategoryExtension on CategoryEntity {
     return copyWith(items: updatedItems);
   }
 
+  CategoryEntity clearSelection() {
+    final updatedItems = items.map((item) => item.copyWith(isSelected: false)).toList();
+    return copyWith(items: updatedItems);
+  }
+
   List<ItemEntity> _getUpdatedItems(CategoryEntity category, int itemId) {
     return category.items.map((item) {
       if (itemId == item.id) return item.copyWith(isSelected: !item.isSelected);

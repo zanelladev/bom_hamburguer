@@ -28,4 +28,16 @@ class AppColors {
   static const success700 = Color(0xff388E3C);
   static const success800 = Color(0xff2E7D32);
   static const success900 = Color(0xff1B5E20);
+
+  // Destructive
+  static const destructive050 = Color(0xffFDEDED);
+  static const destructive100 = Color(0xffF9BDBD);
+  static const destructive200 = Color(0xffF48FB1);
+  static const destructive300 = Color(0xffF06292);
+  static const destructive400 = Color(0xffEC407A);
+  static const destructive500 = Color(0xffE91E63);
+  static const destructive600 = Color(0xffD81B60);
+  static const destructive700 = Color(0xffC2185B);
+  static const destructive800 = Color(0xffAD1457);
+  static const destructive900 = Color(0xff880E4F);
 }

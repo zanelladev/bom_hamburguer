@@ -1,7 +1,7 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/item_entity.dart';
+import '../../../domain/entities/item_entity.dart';
 
 class ItemWidget extends StatelessWidget {
   final ItemEntity item;

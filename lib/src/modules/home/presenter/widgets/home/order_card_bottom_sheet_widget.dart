@@ -1,20 +1,27 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../controllers/order_controller.dart';
-import '../controllers/order_state.dart';
+import '../../../home_module_routes.dart';
+import '../../controllers/order_controller.dart';
+import '../../controllers/order_state.dart';
 
 class OrderCardBottomSheetWidget extends StatelessWidget {
+  final VoidCallback onOrderConfirmed;
   final OrderController controller;
 
-  const OrderCardBottomSheetWidget(this.controller, {super.key});
+  const OrderCardBottomSheetWidget({
+    super.key,
+    required this.controller,
+    required this.onOrderConfirmed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: controller,
       builder: (context, state, child) {
-        if (state.isInitial) return const SizedBox.shrink();
+        if (!state.isLoaded) return const SizedBox.shrink();
 
         return Container(
           width: double.infinity,
@@ -98,8 +105,14 @@ class OrderCardBottomSheetWidget extends StatelessWidget {
               Visibility(
                 visible: state is OrderLoadedState,
                 child: AppElevatedButton(
-                  label: 'Confirm Order',
-                  onPressed: () {},
+                  label: 'Detail Order',
+                  onPressed: () {
+                    context.pushNamed(HomeRoutesEnum.orderDetails.name).then((value) {
+                      if (value == true) {
+                        onOrderConfirmed();
+                      }
+                    });
+                  },
                   isLoading: state.isLoading,
                   backgroundColor: AppColors.success500,
                   textColor: AppColors.neutral050,
