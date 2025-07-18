@@ -19,9 +19,10 @@ class HomeModuleInjections extends ModuleInjections {
       () => GetCategoriesUsecase(ServiceLocator.instance.get<ICategoryRepository>()),
     );
 
-    ServiceLocator.instance.bindFactory<CategoriesController>(() => CategoriesController(
-          ServiceLocator.instance.get<GetCategoriesUsecase>(),
-        ));
+    // TODO: rever
+    ServiceLocator.instance.bindSingleton<CategoriesController>(CategoriesController(
+      ServiceLocator.instance.get<GetCategoriesUsecase>(),
+    ));
 
     ServiceLocator.instance.bindFactory<IOrderRepository>(
       () => OrderRepository(),
