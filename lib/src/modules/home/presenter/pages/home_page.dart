@@ -1,12 +1,15 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-import '../controller/home_controller.dart';
+import '../controllers/home_controller.dart';
 
 class HomePage extends StatelessWidget {
   final HomeController controller;
 
-  const HomePage({super.key, required this.controller});
+  const HomePage({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class HomePage extends StatelessWidget {
                               final item = category.items[index];
 
                               return InkWell(
-                                onTap: () => controller.toggleItemSelection(item),
+                                onTap: () => controller.toggleItemSelection(item.id),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

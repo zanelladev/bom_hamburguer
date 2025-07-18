@@ -1,5 +1,5 @@
 import '../../core/core.dart';
-import 'presenter/controller/home_controller.dart';
+import 'presenter/controllers/home_controller.dart';
 import 'presenter/pages/home_page.dart';
 
 class HomeModuleRoutes extends ModuleRoutes {
