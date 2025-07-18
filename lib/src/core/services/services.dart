@@ -2,8 +2,3 @@
 export 'service_locator/exceptions/service_locator_exceptions.dart';
 export 'service_locator/i_service_locator.dart';
 export 'service_locator/implementations/service_locator.dart';
-// storage_service
-export 'storage_service/exceptions/storage_exceptions.dart';
-export 'storage_service/i_storage_service.dart';
-export 'storage_service/implementations/factories/secure_storage_factory.dart';
-export 'storage_service/implementations/secure_storage_service.dart';
